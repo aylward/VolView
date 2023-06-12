@@ -20,6 +20,7 @@ import proxyConfiguration from './vtk/proxy';
 import { CorePiniaProviderPlugin } from './core/provider';
 import ProxyWrapper from './core/proxies';
 import { patchExitPointerLock } from './utils/hacks';
+import { StoreRegistry } from './plugins/storeRegistry';
 
 // patches
 patchExitPointerLock();
@@ -47,6 +48,7 @@ pinia.use(
     dicomIO,
   })
 );
+pinia.use(StoreRegistry);
 
 const app = createApp(App);
 app.provide('ProxyManager', proxyManager);
